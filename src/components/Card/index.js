@@ -1,17 +1,17 @@
 import React from 'react'
 import { Container, Label } from './styles'
 
-const Card = () => {
+const Card = ({ data }) => {
+    console.log('Data', data)
     return (
         <Container>
             <header>
-                <Label color="#7159c1" />
+                {data.labels.map((label) => (
+                    <Label key={'label'} color={label} />
+                ))}
             </header>
-            <p>Fazer a migração completa de servidor</p>
-            <img
-                src="https://avatars.githubusercontent.com/u/58841768?s=400&v=4"
-                alt=""
-            />
+            <p>{data.content}</p>
+            {data.user && <img src={data.user} alt="" />}
         </Container>
     )
 }
